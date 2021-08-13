@@ -16,7 +16,7 @@ Firstly, I have never done any benchmarks before. I tried my best to study the t
 
 Secondly, I am no expert on all languages presented in this benchmark. Therefore, if you have better code solutions, feel free to submit them as well. I will review them as soon as possible. 
 
-Finally, if you would like to suggest a new topic for future benchmarks, submit them as well through the means listed above. Please, read this submition [guideline](https:/github.com/rillki/humble-benchmarks/blob/main/Topic submission guideline.md). 
+Finally, if you would like to suggest a new topic for future benchmarks, submit them as well through the means listed above. Please, read this submition [guideline](../Topic%20submission%20guideline.md). 
 
 ## Introduction
 
@@ -154,7 +154,7 @@ That's it for this benchmark.
 
 If you have any questions, suggestions and/or imporovement proposals feel free to create an issue or contact me via my [email](rill.ki@yahoo.com). 
 
-If you would like to propose a future benchmark topic, then check out the topic submission [guideline](../Topic-submission-guideline.md).
+If you would like to propose a future benchmark topic, then check out the topic submission [guideline](../Topic%20submission%20guideline.md).
 
 
 
