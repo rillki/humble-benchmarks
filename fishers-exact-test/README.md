@@ -16,13 +16,13 @@ Firstly, I have never done any benchmarks before. I tried my best to study the t
 
 Secondly, I am no expert on all languages presented in this benchmark. Therefore, if you have better code solutions, feel free to submit them as well. I will review them as soon as possible. 
 
-Finally, if you would like to suggest a new topic for future benchmarks, submit them as well through the means listed above. Please, read this submition [guideline](../Topic\ submission\ guideline.md). 
+Finally, if you would like to suggest a new topic for future benchmarks, submit them as well through the means listed above. Please, read this submition [guideline](../Topic-submission-guideline.md). 
 
 ## Introduction
 
 The purpose of this benchmark is to find how quickly various compiled programming languages are able to perform compared to Python and R library implementations. In other words, Python and R will not implement the algorithms themselves, but will use algorithms that are already implemented in available stats packages, be it a C code that is called from Python/R or a direct Python/R implementation. 
 
-The reason such a "strange" strategy is chosen is to examine, whether the performance gains achieved by rewriting the Python/R code in a compiled language is worth the time and effort required for such a task. In addition, I'm just curious what would be the results, what language attains the best result. 
+The reason such a "strange" strategy is chosen is to examine whether the performance gains achieved by rewriting the Python/R code in a compiled language is worth the time and effort required for such a task. In addition, I'm just curious what would be the results, what language attains the best result. 
 
 This is by no means a language comparison. And it's hardly viable to judge language performance by a single test. Therefore, I suggest you to study the topic more broadly using all available internet resources to come to your own conclusions. 
 
@@ -104,51 +104,49 @@ D betterC|dmd v2.097.1|23.2|340|10.2|88
 D betterC|gdc v11.1.0|12.9|360|10.4|88
 D betterC|ldc v1.27.0|10.4|340|14|88
 
-1. execution time (sec)
+### 1. execution time (sec)
 <center><img src="results/plots/exec_time_compiler-wise.jpg"></center>
 
 C, Rust and D in betterC mode were the fastest, as well as C++ compiled with clang. 
 
-GCC C++ was twice as slow. Although, I'm quite sure, had I rewritten the code without `std::vector`, the performance would have been the same. 
+GCC C++ was twice as slow. Although, I'm quite sure, had I rewritten the code without `std::vector`, the performance would have been the same as with Clang binary. 
 
-D code compiled with GDC turned out to be the slowest whereas LDC produced the fastest executable. DMD, on the other hand, turned out to be somewhere in the middle. 
+D code compiled with GDC turned out to be the slowest, whereas LDC produced the fastest executable every time. DMD, on the other hand, turned out to be somewhere in the middle. 
 
-Python and R were the slowest. It took approximately 8 minutes to run 100'000 FET tests. My expectations were around 15-20 minutes though. 
+For Python and R it took approximately 8 minutes to run 100'000 FET tests. My expectations were around 15-20 minutes though. 
 
-2. memory consumption (kb)
+### 2. memory consumption (kb)
 <center><img src="results/plots/mem_consump_compiler-wise.jpg"></center>
 
-Let's start with D this time. We have seen that LDC produced the fastest executable, but when it comes to memory consumption, its binary consumes the most memory when using GC (which is how you would use D normally). 
+Let's start with D this time. We have seen that LDC produced the fastest executable, but when it comes to memory consumption, its binary consumes the largest amount of memory among all languages when using GC (which is how you would normally use D). 
 
 D in betterC mode was in par with C and Rust followed by C++ irrespective of what compiler is used.
 
 Strangely though, C compiled with GCC consumed twice as less memory than the binary produced by Clang. The same situation can be observed with C++, but reversed. I am not a compiler expert, so I won't guess what might be the reason.
 
-3. binary size (kb)
+### 3. binary size (kb)
 <center><img src="results/plots/bin_size.jpg"></center>
  
  C, C++ and D in betterC mode have the smallest binaries. Rust is somewhere in the middle with ~400kb. D compiled with LDC produced the largest binaries of ~6Mb.
  
-4. conciseness of a programming language (lines of code)
+### 4. conciseness of a programming language (lines of code)
 Every FET implementation was approximately the same. Python and R had ~20 loc, excluding library implementation. 
 
 # Conclusion
 
 Before drawing my own conclusion from the results above, I'd like first to restate what was mentioned earlier: it's hardly viable to judge a language by a single test. The results vary, and it all depends on what you want to achive. 
 
-In this particular example, the performance gains aren't that significant to motivate me to rewrite my Python/R code in a compiled language. Python executed the code in ~8 minutes, and it took me the same amount of time to implement the Fisher's Exact test. Nonetheless, we should not forget the fact that it's a single test and it hardly describes the real world. 
+In this particular example, the performance gains aren't that significant to motivate me to rewrite my Python/R code in a compiled language. Python executed the code in ~8 minutes, and it took me approximately the same amount of time to implement the Fisher's Exact test myself. Nonetheless, we should not forget the fact that it's a single test and it hardly describes the real world. 
 
-I was doing machine learning once and experienced long wait times before I could examine the results. I really like experimenting with various inputs, curiosity is the main driving force here. So I adjust the model, then send it through the machine learning pipeline many times until I am satisfied with the result. It was terribly slow. Of course, there are ways to make it faster, but it's a different topic. 
-
-This was what motivated to take a look at compiled languages and experiment with what they can offer in terms of performance. Python/R is a great choice, but if you are working from a laptop, it might be slow sometimes. 
+I was doing machine learning project once and experienced long wait times before I could examine the results. It was terribly slow. Of course, there are ways to make it faster, but it's a different topic. This was what motivated to take a look at the compiled languages and experiment with what they can offer in terms of performance. Python/R is a great choice, but if you are working from a laptop, it might be slow sometimes. 
 
 If I had to rewrite some of my Python/R code in a compiled language I would go for C++ or D. D offers a more pleasant syntax that I can intuitevely understand. C++ is a great choice as well, but I personally prefer the latter for the following reasons:
 
 D has it's own 'interpreter' called `rdmd`. Although, it just invokes the compiler, but it's fast and does indeed feel like an interpreter. Thus, your D code can be run as a script, the same as you would do with Python;
 
-D has a nice package manager called DUB. It manages my projects and dependencies without involving me in the process. I know C++ has CMake and it's a great tool, but to quote some random person on the internet: "I really like it, when I am not the one writing it." :)
+D has a nice package manager called DUB. It manages my code and external dependencies without involving me in the process. I know C++ has CMake and it's a great tool, but to quote some random person on the internet: "I really like it, when I am not the one writing it." :)
 
-The reseason I wouldn't go for Rust is simply because I'm not very well familiar with the language. I played with it many times though, but it's syntax and the way it makes you think is something one must adapt to before becoming proficient in the language.
+The reason I wouldn't go for Rust is simply because I'm not very well familiar with the language. I played with it many times though, but it's syntax and the way it makes you think is something one must adapt to before becoming proficient in the language.
 
 That's it for this benchmark. 
 
@@ -156,7 +154,7 @@ That's it for this benchmark.
 
 If you have any questions, suggestions and/or imporovement proposals feel free to create an issue or contact me via my [email](rill.ki@yahoo.com). 
 
-If you would like to propose a future benchmark topic, then check out the topic submission [guideline](../Topic\ submission\ guideline.md).
+If you would like to propose a future benchmark topic, then check out the topic submission [guideline](../Topic-submission-guideline.md).
 
 
 
