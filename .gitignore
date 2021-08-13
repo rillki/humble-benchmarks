@@ -1,0 +1,11 @@
+# custom
+.DS_Store
+bin/
+__internal/
+lib/
+target/
+*.o
+
+
+
+
