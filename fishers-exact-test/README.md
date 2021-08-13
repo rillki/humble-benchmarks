@@ -152,7 +152,7 @@ That's it for this benchmark.
 
 ## Suggestions, questions and improvement proposals
 
-If you have any questions, suggestions and/or imporovement proposals feel free to create an issue or contact me via my [email](rill.ki@yahoo.com). 
+If you have any questions, suggestions and/or imporovement proposals feel free to create an issue or contact me via my email: rill.ki@yahoo.com 
 
 If you would like to propose a future benchmark topic, then check out the topic submission [guideline](../Topic%20submission%20guideline.md).
 
