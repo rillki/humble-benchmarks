@@ -1,2 +1,2 @@
 # Humble benchmarks
-Benchmarking programming languages using statistics and machine learning algorithms
+Benchmarking programming languages using statistics and machine learning algorithms.
