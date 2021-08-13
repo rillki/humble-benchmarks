@@ -13,7 +13,7 @@ What languages would you like to test?
 
 #### Motivation 
 
-Why should the proposed benchmark be tested? You personal motives? Questions you hope find answers to by viewing benchmark results?
+Why should the proposed benchmark be tested? Any questions you hope find answers to by viewing benchmark results?
 
 #### Benchmark criteria 
 
