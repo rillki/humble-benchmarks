@@ -1,7 +1,7 @@
 # Topic submission guideline
 
 ## Outline
-To propose a new benchmark topic, please follow the outline below:
+Make sure that the proposed benchmark is related to Statistics or Machine learning fields; please follow the outline below:
 
 #### Title
 
