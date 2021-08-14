@@ -20,7 +20,7 @@ Finally, if you would like to suggest a new topic for future benchmarks, submit 
 
 ## Introduction
 
-The purpose of this benchmark is to find how quickly various compiled programming languages are able to perform compared to Python and R library implementations. In other words, Python and R will not implement the algorithms themselves, but will use algorithms that are already implemented in available stats packages, be it a C code that is called from Python/R or a direct Python/R implementation. 
+The purpose of this benchmark is to find how quickly various compiled programming languages are able to perform compared to Python and R library implementations. In other words, Python and R will not implement the algorithms themselves, but will use algorithms that are already implemented in available stats packages, be it C code that is called from Python/R or a direct Python/R implementation. 
 
 The reason such a "strange" strategy is chosen is to examine whether the performance gains achieved by rewriting the Python/R code in a compiled language is worth the time and effort required for such a task. In addition, I'm just curious what would be the results, what language attains the best result. 
 
@@ -138,13 +138,13 @@ Before drawing my own conclusion from the results above, I'd like first to resta
 
 In this particular example, the performance gains aren't that significant to motivate me to rewrite my Python/R code in a compiled language. Python executed the code in ~8 minutes, and it took me approximately the same amount of time to implement the Fisher's Exact test myself. Nonetheless, we should not forget the fact that it's a single test and it hardly describes the real world. 
 
-I was doing machine learning project once and experienced long wait times before I could examine the results. It was terribly slow. Of course, there are ways to make it faster, but it's a different topic. This was what motivated to take a look at the compiled languages and experiment with what they can offer in terms of performance. Python/R is a great choice, but if you are working from a laptop, it might be slow sometimes. 
+I was doing machine learning project once and experienced long wait times before I could examine the results. Of course, there are ways to make it faster, but it's a different topic. This was what motivated me to take a look at the compiled languages and experiment with what they can offer in terms of performance. Python/R is a great choice, but if you are working from a laptop, it might be slow sometimes. 
 
-If I had to rewrite some of my Python/R code in a compiled language I would go for C++ or D. D offers a more pleasant syntax that I can intuitevely understand. C++ is a great choice as well, but I personally prefer the latter for the following reasons:
+If I had to rewrite some of my Python/R code in a compiled language I would go for C++ or D. D offers a more pleasant syntax that I can intuitevely understand. C++ has many great libraries and frameworks readily available. Personally, however, I prefer the former for the following reasons:
 
 D has it's own 'interpreter' called `rdmd`. Although, it just invokes the compiler, but it's fast and does indeed feel like an interpreter. Thus, your D code can be run as a script, the same as you would do with Python;
 
-D has a nice package manager called DUB. It manages my code and external dependencies without involving me in the process. I know C++ has CMake and it's a great tool, but to quote some random person on the internet: "I really like it, when I am not the one writing it." :)
+D has a nice package manager called DUB. It manages my code and external dependencies without involving me in the process.
 
 The reason I wouldn't go for Rust is simply because I'm not very well familiar with the language. I played with it many times though, but it's syntax and the way it makes you think is something one must adapt to before becoming proficient in the language.
 
