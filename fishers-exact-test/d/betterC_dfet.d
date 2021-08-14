@@ -38,7 +38,7 @@ void logFactorial(const long n, double* fs) {
 	}
 }
 
-double logHypergeometricProbability(ref const long[4] data, const double* fs) {
+double logHypergeometricProbability(const ref long[4] data, const double* fs) {
 	return (
 		fs[data[0] + data[1]] +
 		fs[data[2] + data[3]] +
