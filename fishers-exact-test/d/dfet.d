@@ -11,27 +11,27 @@ void main(string[] argv) {
 		"Specify number of iterations!".writeln;
 		return;
 	}
-	
+
 	// our contingency table
 	const long[4] data = [
 		1982, 3018,
 		2056, 2944
 	];
-		
+
 	double pvalue = 0.0;
 	foreach(i; 0..argv[1].to!int) {
 		pvalue = data.fisherExact;
 	}
-	
+
 	writeln("pvalue = ", pvalue);
 }
 
 double[] logFactorial(const long n) {
-	double[] fs;
+	auto fs = new double[](n + 1);
 
-	fs ~= 0;
+	fs[0] = 0;
 	foreach(i; 1..(n+1)) {
-		fs ~= fs[i-1] + log(i);
+		fs[i] = fs[i-1] + log(i);
 	}
 
 	return fs;
@@ -54,7 +54,7 @@ double logHypergeometricProbability(const long[] data, const ref double[] fs) {
 double fisherExact(const long[] data) {
 	// sum all table values
 	const grandTotal = data.sum;
-	
+
 	// save factorial values for repeated use in the loop below
 	const factorials = logFactorial(grandTotal);
 
