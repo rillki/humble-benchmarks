@@ -29,7 +29,7 @@ Please provide an implementation(s) in any of the following languages (copy&past
 * Python
 * R
 
-You may provide an implementation in a language not mentioned here, but I may not understand it, thus, I won't be able to translate it to other langauges. For example, a Rust implementation might be difficult to understand (it's very cryptic sometimes).
+You may provide an implementation in a language not mentioned here, but I may not understand it, thus, I may have difficulties translating it to other langauges.
 
 ## Example
 
