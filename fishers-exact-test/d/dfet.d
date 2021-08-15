@@ -37,6 +37,7 @@ double[] logFactorial(const long n) {
 	return fs;
 }
 
+pragma(inline, true)
 double logHypergeometricProbability(const long[] data, const double[] fs) {
 	return (
 		fs[data[0] + data[1]] +
@@ -51,6 +52,7 @@ double logHypergeometricProbability(const long[] data, const double[] fs) {
 	);
 }
 
+pragma(inline, false)
 double fisherExact(const long[] data) {
 	// sum all table values
 	const grandTotal = data.sum;

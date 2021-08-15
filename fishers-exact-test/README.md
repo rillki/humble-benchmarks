@@ -87,40 +87,46 @@ Table values used in the test:
 Plots are available down below. Here is a table with the results:
 lang|compiler|exec time (s)|mem consump (kb)|bin size (kb)|loc
 --- | --- | --- | --- | --- | --- 
-C|gcc v11.1.0|9.2|340|8.8|83
-C|clang v11.0.0|11.3|900|8.8|83
-C++|gcc v11.1.0|14.5|1000|9.9|83
+C|gcc v11.1.0|11.3|900|8.8|83
+C|clang v11.0.0|9.1|340|8.8|83
+C++|gcc v11.1.0|14.4|1000|9.9|83
 C++|clang v11.0.0|9.4|340|15.2|83
-D|dmd v2.097.1|97.6|2000|1270|81
-D|gdc v11.1.0|195|2300|229.4|81
-D|ldc v1.27.0|50.4|5000|6175|81
-Rust|cargo (rustc) v1.51.0|13|264|459.8|118
+D|dmd v2.097.1|35.7|1300|1200|85
+D|gdc v11.1.0|125.5|1600|228.8|85
+D|ldc v1.27.0|28.4|1500|6175|85
+D libcMath|dmd v2.097.1|25|1300|1200|85
+D libcMath|gdc v11.1.0|11.9|1800|228.7|85
+D libcMath|ldc v1.27.0|12.2|1500|6175|85
+Rust|rustc v1.51.0|13|264|459.8|118
 Python|v3.9.6|466.5|35300|0|22
 R |v4.1.0|481.82|48500|0|18
-D nogc|dmd v2.097.1|48|460|829.8|86
-D nogc|gdc v11.1.0|150.2|968|95.7|86
-D nogc|ldc v1.27.0|30.8|636|6155|86
-D betterC|dmd v2.097.1|23.2|340|10.2|88
-D betterC|gdc v11.1.0|12.9|360|10.4|88
-D betterC|ldc v1.27.0|10.4|340|14|88
+D nogc|dmd v2.097.1|47.8|464|829.6|90
+D nogc|gdc v11.1.0|156.2|972|95.6|90
+D nogc|ldc v1.27.0|30.8|632|6155|90
+D nogc libcMath|dmd v2.097.1|27.8|460|817.6|90
+D nogc libcMath|gdc v11.1.0|44.1|984|93.7|90
+D nogc libcMath|ldc v1.27.0|13.1|632|6155|90
+D betterC|dmd v2.097.1|21.2|340|10|90
+D betterC|gdc v11.1.0|10.4|368|10.4|90
+D betterC|ldc v1.27.0|10.3|340|14|90
 
 ### 1. execution time (sec)
 <center><img src="results/plots/exec_time_compiler-wise.jpg"></center>
 
-C, C++, Rust and D in betterC mode were the fastest. 
+C, C++, D were the fastest at ~10s followed by Rust programming language at ~13s.  
 
-D code compiled with GDC turned out to be the slowest, whereas LDC produced the fastest executable every time. DMD, on the other hand, turned out to be somewhere in the middle. 
+D using libcMath and D in betterC mode have the same performance as C/C++. But the phobosMath D version was twice as slow with GDC binary being the slowest with the execution time of ~2 minutes.
 
 For Python and R it took approximately 8 minutes to run 100'000 FET tests. My expectations were around 15-20 minutes though. 
 
 ### 2. memory consumption (kb)
 <center><img src="results/plots/mem_consump_compiler-wise.jpg"></center>
 
-Let's start with D this time. We have seen that LDC produced the fastest executable, but when it comes to memory consumption, its binary consumes the largest amount of memory among all languages when using GC (which is how you would normally use D). 
+Let's start with D this time. Binaries produced with GDC consumed the largest amounts of memory among all programming languages followed by LDC. DMD binaries required the least memory. 
 
-D in betterC mode was in par with C, C++ and Rust irrespective of what compiler is used.
+D in betterC mode and its libcMath version was in par with C, C++ and Rust if GDC and LDC are used.
 
-Strangely though, C compiled with GCC consumed twice as less memory than the binary produced by Clang. The same situation can be observed with C++, but reversed. I am not a compiler expert, so I won't guess what might be the reason.
+Strangely though, C and C++ compiled with GCC consumed twice as much memory than the binary produced by Clang. I am not a compiler expert, so I won't guess what might be the reason.
 
 ### 3. binary size (kb)
 <center><img src="results/plots/bin_size.jpg"></center>

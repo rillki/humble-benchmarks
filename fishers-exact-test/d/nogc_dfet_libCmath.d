@@ -1,18 +1,19 @@
 module fisherExact;
 
 import std.algorithm: sum;
+import std.container: Array;
 
 import core.stdc.stdio: printf;
+import core.stdc.stdlib: atoi;
 import core.stdc.math: log, exp;
-import core.stdc.stdlib: atoi, malloc, free;
 
-extern(C):
+@nogc:
 
-int main(int argc, const char** argv) {
+void main(const string[] argv) {
 	// checking num of agruments
-	if(argc < 2) {
+	if(argv.length < 2) {
 		printf("Specify number of iterations!\n");
-		return 0;
+		return;
 	}
 	
 	// our contingency table
@@ -22,24 +23,27 @@ int main(int argc, const char** argv) {
 	];
 		
 	double pvalue = 0.0;
-	foreach(i; 0..argv[1].atoi) {
+	foreach(i; 0..argv[1].ptr.atoi) {
 		pvalue = data.fisherExact;
 	}
 	
 	printf("pvalue = %f\n", pvalue);
-
-	return 0;
 }
 
-void logFactorial(const long n, double* fs) {
-	fs[0] = 0;
+Array!double logFactorial(const long n) {
+	Array!double fs;
+	fs.reserve(n+1);
+
+	fs.insertBack(0);
 	foreach(i; 1..(n+1)) {
-		fs[i] = fs[i-1] + log(i);
+		fs.insertBack(fs[i-1] + log(i));
 	}
+
+	return fs;
 }
 
 pragma(inline, true)
-double logHypergeometricProbability(const ref long[4] data, const double* fs) {
+double logHypergeometricProbability(const ref long[4] data, const ref Array!double fs) {
 	return (
 		fs[data[0] + data[1]] +
 		fs[data[2] + data[3]] +
@@ -58,12 +62,8 @@ double fisherExact(const long[4] data) {
 	// sum all table values
 	const grandTotal = data[0..$].sum;
 	
-	// allocate factorials
-	double* factorials = cast(double*)(malloc(double.sizeof * (grandTotal + 1))); 
-	scope(exit) { factorials.free; }
-	
 	// save factorial values for repeated use in the loop below
-	logFactorial(grandTotal, factorials);
+	const factorials = logFactorial(grandTotal);
 
 	// calculate our rejection threshold
 	const pvalThreshold = logHypergeometricProbability(data, factorials);
