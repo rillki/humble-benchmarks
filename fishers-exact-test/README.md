@@ -7,6 +7,7 @@
 4. Benchmark results
 5. Conclusion
 6. Suggestions, questions and improvement proposals
+7. Acknowledgements
 
 ## Preface
 
@@ -160,9 +161,11 @@ If you have any questions, suggestions and/or imporovement proposals feel free t
 
 If you would like to propose a future benchmark topic, then check out the topic submission [guideline](../Topic%20submission%20guideline.md).
 
-
-
-
+## Acknowledgements
+Special thanks to the following contributors for helping to improve this benchmark:
+* [John Colvin](https://github.com/John-Colvin)
+* [Ryuukk](https://github.com/ryuukk)
+* [Sergey Podobry](https://github.com/SergiusTheBest)
 
 
 
