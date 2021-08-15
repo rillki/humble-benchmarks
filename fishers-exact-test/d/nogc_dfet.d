@@ -42,7 +42,7 @@ Array!double logFactorial(const long n) {
 	return fs;
 }
 
-double logHypergeometricProbability(const long[4] data, const ref Array!double fs) {
+double logHypergeometricProbability(const ref long[4] data, const ref Array!double fs) {
 	return (
 		fs[data[0] + data[1]] +
 		fs[data[2] + data[3]] +
@@ -84,7 +84,7 @@ double fisherExact(const long[4] data) {
 		}
 	}
 
-	return exp(pvalThreshold + log(pvalFraction));
+	return (exp(pvalThreshold) * pvalFraction);
 }
 
 

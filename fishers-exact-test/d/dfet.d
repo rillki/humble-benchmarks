@@ -76,12 +76,13 @@ double fisherExact(const long[] data) {
 
 	double pvalFraction = 0;
 	foreach(i; data[3] - data[0] .. data[0] + min(data[1], data[2]) + 1) {
-		long[4] newData = [ // being explicit about not allocating
+		const long[4] newData = [ // being explicit about not allocating
 			i,
 			data[0] + data[1] - i,
 			data[0] + data[2] - i,
 			data[3] - data[0] + i
 		];
+
 		double lhgp = logHypergeometricProbability(newData, factorials);
 
 		if(lhgp <= pvalThreshold) {
@@ -89,6 +90,5 @@ double fisherExact(const long[] data) {
 		}
 	}
 
-	return exp(pvalThreshold + log(pvalFraction));
+	return (exp(pvalThreshold) * pvalFraction);
 }
-

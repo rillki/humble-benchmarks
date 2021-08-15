@@ -89,8 +89,8 @@ lang|compiler|exec time (s)|mem consump (kb)|bin size (kb)|loc
 --- | --- | --- | --- | --- | --- 
 C|gcc v11.1.0|9.2|340|8.8|83
 C|clang v11.0.0|11.3|900|8.8|83
-C++|gcc v11.1.0|46.8|1500|15|84
-C++|clang v11.0.0|11.7|832|15.9|84
+C++|gcc v11.1.0|14.5|1000|9.9|83
+C++|clang v11.0.0|9.4|340|15.2|83
 D|dmd v2.097.1|97.6|2000|1270|81
 D|gdc v11.1.0|195|2300|229.4|81
 D|ldc v1.27.0|50.4|5000|6175|81
@@ -107,9 +107,7 @@ D betterC|ldc v1.27.0|10.4|340|14|88
 ### 1. execution time (sec)
 <center><img src="results/plots/exec_time_compiler-wise.jpg"></center>
 
-C, Rust and D in betterC mode were the fastest, as well as C++ compiled with clang. 
-
-GCC C++ was twice as slow. Although, I'm quite sure, had I rewritten the code without `std::vector`, the performance would have been the same as with Clang binary. 
+C, C++, Rust and D in betterC mode were the fastest. 
 
 D code compiled with GDC turned out to be the slowest, whereas LDC produced the fastest executable every time. DMD, on the other hand, turned out to be somewhere in the middle. 
 
@@ -120,7 +118,7 @@ For Python and R it took approximately 8 minutes to run 100'000 FET tests. My ex
 
 Let's start with D this time. We have seen that LDC produced the fastest executable, but when it comes to memory consumption, its binary consumes the largest amount of memory among all languages when using GC (which is how you would normally use D). 
 
-D in betterC mode was in par with C and Rust followed by C++ irrespective of what compiler is used.
+D in betterC mode was in par with C, C++ and Rust irrespective of what compiler is used.
 
 Strangely though, C compiled with GCC consumed twice as less memory than the binary produced by Clang. The same situation can be observed with C++, but reversed. I am not a compiler expert, so I won't guess what might be the reason.
 
