@@ -4,6 +4,7 @@ import std.stdio: writeln;
 import std.algorithm: sum;
 import std.math: log, exp;
 import std.conv: to;
+import std.array : uninitializedArray;
 
 void main(string[] argv) {
 	// checking num of agruments
@@ -27,7 +28,7 @@ void main(string[] argv) {
 }
 
 double[] logFactorial(const long n) {
-	auto fs = new double[](n + 1);
+	auto fs = uninitializedArray!(double[])(n + 1);
 
 	fs[0] = 0;
 	foreach(i; 1..(n+1)) {
