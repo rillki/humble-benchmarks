@@ -84,7 +84,7 @@ double fisherExact(const long[4] data) {
 		}
 	}
 
-	return exp(pvalThreshold + log(pvalFraction));
+	return (exp(pvalThreshold) * pvalFraction);
 }
 
 

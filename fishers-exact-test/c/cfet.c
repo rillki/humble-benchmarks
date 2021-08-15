@@ -79,5 +79,5 @@ double fisher_exact(const long vals[]) {
 
     free(factorials);
 
-	return exp(pvalThreshold + log(pvalFraction));
+	return (exp(pvalThreshold) * pvalFraction);
 }

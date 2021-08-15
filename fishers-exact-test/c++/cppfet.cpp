@@ -56,7 +56,7 @@ double fisher_exact(const std::array<long, 4>& data) {
 		}
 	}
     
-	return exp(pvalThreshold + log(pvalFraction));
+	return (exp(pvalThreshold) * pvalFraction);
 }
 
 int main(int argc, char* argv[]) {

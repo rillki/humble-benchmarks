@@ -37,7 +37,7 @@ double[] logFactorial(const long n) {
 	return fs;
 }
 
-double logHypergeometricProbability(const long[] data, const ref double[] fs) {
+double logHypergeometricProbability(const long[] data, const double[] fs) {
 	return (
 		fs[data[0] + data[1]] +
 		fs[data[2] + data[3]] +
@@ -64,12 +64,14 @@ double fisherExact(const long[] data) {
 	double pvalFraction = 0;
 	for(long i = 0; i <= grandTotal; i++) {
 		if((data[0] + data[1] - i >= 0) && (data[0] + data[2] - i >= 0) && (data[3] - data[0] + i >=0)) {
-			double lhgp = logHypergeometricProbability([
+			const long[4] newData = [
 				i,
 				data[0] + data[1] - i,
 				data[0] + data[2] - i,
 				data[3] - data[0] + i
-			], factorials);
+			];
+
+			double lhgp = logHypergeometricProbability(newData, factorials);
 
 			if(lhgp <= pvalThreshold) {
 				pvalFraction += exp(lhgp - pvalThreshold);
@@ -77,7 +79,7 @@ double fisherExact(const long[] data) {
 		}
 	}
 
-	return exp(pvalThreshold + log(pvalFraction));
+	return (exp(pvalThreshold) * pvalFraction);
 }
 
 
