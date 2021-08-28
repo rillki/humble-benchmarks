@@ -5,8 +5,8 @@
 #include <numeric>
 #include <stdlib.h>
 
-std::vector<double> logFactorial(const long n) {
-    std::vector<double> fs(n + 1);
+std::vector<long double> logFactorial(const long n) {
+    std::vector<long double> fs(n + 1);
 	
 	fs[0] = 0;
 	for(long i = 1; i < n+1; i++) {
@@ -16,7 +16,7 @@ std::vector<double> logFactorial(const long n) {
     return fs;
 }
 
-double logHypergeometricProbability(const std::array<long, 4>& data, const std::vector<double>& fs) {
+long double logHypergeometricProbability(const std::array<long, 4>& data, const std::vector<long double>& fs) {
 	return (
 		fs[data[0] + data[1]] +
 		fs[data[2] + data[3]] +
@@ -30,20 +30,20 @@ double logHypergeometricProbability(const std::array<long, 4>& data, const std::
 	);
 }
 
-double fisher_exact(const std::array<long, 4>& data) {
+long double fisher_exact(const std::array<long, 4>& data) {
     // sum all table values
 	const long grandTotal = data[0] + data[1] + data[2] + data[3];
 	
     // save factorial values for repeated use in the loop below
-    const std::vector<double> factorials = logFactorial(grandTotal);
+    const std::vector<long double> factorials = logFactorial(grandTotal);
     
     // calculate our rejection threshold
-	const double pvalThreshold = logHypergeometricProbability(data, factorials);
+	const long double pvalThreshold = logHypergeometricProbability(data, factorials);
 	
-    double pvalFraction = 0;
+    long double pvalFraction = 0;
 	for(long i = 0; i <= grandTotal; i++) {
 		if((data[0] + data[1] - i >= 0) && (data[0] + data[2] - i >= 0) && (data[3] - data[0] + i >=0)) {
-            double lhgp = logHypergeometricProbability({
+            long double lhgp = logHypergeometricProbability({
                 i,
                 data[0] + data[1] - i,
                 data[0] + data[2] - i,
@@ -72,7 +72,7 @@ int main(int argc, char* argv[]) {
         2056, 2944
     };
     
-    double pvalue = 0.0;
+    long double pvalue = 0.0;
 	for(size_t i = 0; i < atoi(argv[1]); i++) {
 		pvalue = fisher_exact(data);
 	}
