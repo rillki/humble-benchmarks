@@ -27,7 +27,7 @@ void main(string[] argv) {
 	writeln("pvalue = ", pvalue);
 }
 
-double[] logFactorial(const long n) {
+real[] logFactorial(const long n) {
 	auto fs = uninitializedArray!(real[])(n + 1);
 
 	fs[0] = 0;
