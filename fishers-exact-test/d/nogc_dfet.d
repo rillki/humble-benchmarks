@@ -22,16 +22,16 @@ void main(const string[] argv) {
 		2056, 2944
 	];
 		
-	double pvalue = 0.0;
+	real pvalue = 0.0;
 	foreach(i; 0..argv[1].ptr.atoi) {
 		pvalue = data.fisherExact;
 	}
 	
-	printf("pvalue = %f\n", pvalue);
+	printf("pvalue = %Lf\n", pvalue);
 }
 
-Array!double logFactorial(const long n) {
-	Array!double fs;
+Array!real logFactorial(const long n) {
+	Array!real fs;
 	fs.reserve(n+1);
 
 	fs.insertBack(0);
@@ -43,7 +43,7 @@ Array!double logFactorial(const long n) {
 }
 
 pragma(inline, true)
-double logHypergeometricProbability(const ref long[4] data, const ref Array!double fs) {
+real logHypergeometricProbability(const ref long[4] data, const ref Array!real fs) {
 	return (
 		fs[data[0] + data[1]] +
 		fs[data[2] + data[3]] +
@@ -58,7 +58,7 @@ double logHypergeometricProbability(const ref long[4] data, const ref Array!doub
 }
 
 pragma(inline, false)
-double fisherExact(const long[4] data) {
+real fisherExact(const long[4] data) {
 	// sum all table values
 	const grandTotal = data[0..$].sum;
 	
@@ -68,7 +68,7 @@ double fisherExact(const long[4] data) {
 	// calculate our rejection threshold
 	const pvalThreshold = logHypergeometricProbability(data, factorials);
 
-	double pvalFraction = 0;
+	real pvalFraction = 0;
 	for(long i = 0; i <= grandTotal; i++) {
 		if((data[0] + data[1] - i >= 0) && (data[0] + data[2] - i >= 0) && (data[3] - data[0] + i >=0)) {
 			const long[4] temp = [
@@ -78,7 +78,7 @@ double fisherExact(const long[4] data) {
 				data[3] - data[0] + i
 			];
 
-			double lhgp = logHypergeometricProbability(temp, factorials);
+			real lhgp = logHypergeometricProbability(temp, factorials);
 
 			if(lhgp <= pvalThreshold) {
 				pvalFraction += exp(lhgp - pvalThreshold);
