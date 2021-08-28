@@ -3,6 +3,7 @@ module fisherExact;
 import std.stdio: writeln;
 import std.algorithm: sum;
 import std.conv: to;
+import std.array : uninitializedArray;
 
 import core.stdc.math: log, exp;
 
@@ -27,8 +28,8 @@ void main(string[] argv) {
 	writeln("pvalue = ", pvalue);
 }
 
-real[] logFactorial(const long n) {
-	auto fs = new real[](n + 1);
+double[] logFactorial(const long n) {
+	auto fs = uninitializedArray!(real[])(n + 1);
 
 	fs[0] = 0;
 	foreach(i; 1..(n+1)) {
