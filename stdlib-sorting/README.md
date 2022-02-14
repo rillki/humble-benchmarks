@@ -22,8 +22,8 @@ DMD     v2.097.1
 GDC     v11.1.0
 LDC     v1.27.0
 flags:  dmd : -O -release -inline -boundscheck=off
-		  gdc : -O3 -frelease -fbounds-check=off
-		  ldc : -O3 --release --boundscheck=off
+		gdc : -O3 -frelease -fbounds-check=off
+		ldc : -O3 --release --boundscheck=off
 ```
 
 ### Results
