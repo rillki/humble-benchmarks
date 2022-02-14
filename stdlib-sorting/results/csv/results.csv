@@ -1,6 +1,6 @@
 language;compiler;function;time(msecs)
 C;clang;qsort;1442
 C++;clang;std::sort;754
-D;dmd;sort;1305
-D;ldc;sort;805
-D;gdc;sort;2207
+D;dmd;std.algorithm: sort;1305
+D;ldc;std.algorithm: sort;805
+D;gdc;std.algorithm: sort;2207
