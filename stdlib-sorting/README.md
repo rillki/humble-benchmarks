@@ -1,7 +1,7 @@
 # Standard library sort function performance test
 ---
 ### Introduction
-The aim here is to test the C, C++, D standard library implementations of `sort` function and to measure its performance. The data of 1 000 000 integers was randomly generated, then sorted. The time that it took to generate the data was not included.
+The aim here is to test the C, C++, D standard library implementations of `sort` function and to measure its performance. The data of 10 000 000 integers was randomly generated, then sorted. The time that it took to generate the data was not included.
 
 This benchmark was carried out on a MacBook Pro 2015 with 2.9 GHz Intel Core i5, 8 GB of ram and macOS Mojave v10.14.6.
 
